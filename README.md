@@ -18,6 +18,11 @@ Data Cleansing and Transformation In SQL Server and Excel
 Data Modelling in PowerBi 
 Dax For My analysis in PowerBi
 
+## Analysis Dashboard
+![]()
+
+![](Salesdash.jpg)
+
 ## Data Analysis
 I Created a new column to get the company revenue
 ``` SQL
@@ -32,6 +37,25 @@ from order_details
 |------------------------------|
 |    1354338                   |
 This query calculates the Total revenue generated in three years
+
+```sql
+select Count(distinct companyName) as Total_customers from customers
+```
+|  revenue             | 
+|----------------------|
+|   91                 |
+
+```Sql
+select country,count(distinct companyName) no_company 
+from customers
+group by country
+order by no_company desc
+```
+This report provides an analysis of the distribution of companies patronizing Northwind, a comprehensive overview of the number of companies operating in different countries. The findings reveal interesting insights into the presence of companies from various countries.
+
+Among the 91 companies patronizing Northwind, the highest number of companies originates from the United States, with 13 companies operating in the region. France and Germany closely follow, each with 11 operating companies. Additionally, Brazil boasts 9 companies, while the United Kingdom has 7. Spain and Mexico each have 5 companies associated with Northwind.
+
+In conclusion, the distribution of companies at Northwind is diverse, with the United States, France, and Germany having the highest representation. Brazil, the United Kingdom, Spain, and Mexico also have a notable presence among the companies. These findings provide valuable insights into the international reach and client base of Northwind.
 
 2) What are the best perfoeming produts?
 ``` SQL
@@ -136,7 +160,7 @@ from orders;
 |------------------------------|
 |   8                          |
 
-Acoording the analysis, It takes 
+Acoording the analysis, on an average, it takes Northwind 8 days to shipping products to customers. 
    
 ``` DAX
 Total_revenue = ROUND(SUM(order_details[Revenue]),0)
@@ -148,22 +172,14 @@ return
      DIVIDE(([Total_revenue]-[pm revenue]), [pm revenue])
 ```
 
+Upon analyzing the company's revenue growth rate spanning from January to December, it was observed that there was a decline in revenue during five specific months. Amongst these months, May recorded the most significant decrease with a staggering decline of -59.69%. Following closely behind, June experienced a decline of -31.21%.
 
 
-|  ContactTitle                |  NoContact_Title  |
-|------------------------------|-------------------|
-| Owner                        |  17               |
-|  Sales Representative        |  17               |
-| Marketing Manager            |  12               |
-| Sales Manager
- Accounting Manager
- Sales Associate
- Marketing Assistant
- Sales Agent
- Assistant Sales Agent
- Order Administrator
- Assistant Sales Representative
- Owner/Marketing Assistant
+
+# Recommendations
+* Reduction of Shipping Days: I would recommend that shipping days are reduced. Lengthy shipping days can result in customer dissatisfaction and frustration, negative brand image and lost of sales opportunities. The company should toward providing exceptional customer service.
+
+* Offer Incentives Or Discounts/Provide samples or trials of low-ordered product : The most ordered products quantity was from USA, However Louisiana Hot spiced ,Grandma's boysenberr, sirRodney's mamala,Rossle sauerkrant products had extremely low order from USA. Offer these product in USA at a discounted, or offer package deals that include these low-ordered products along with other high-ordered products at a more attractive price. This can increase the perceived value and encourage customers to make a purchase.
 
 
 
