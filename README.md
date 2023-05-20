@@ -19,7 +19,7 @@ Data Modelling in PowerBi
 Dax For My analysis in PowerBi
 
 ## Analysis Dashboard
-![]()
+![](Northwindpowerbi.jpg)
 
 ![](Salesdash.jpg)
 
