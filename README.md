@@ -49,6 +49,13 @@ order by Revenue desc
   Camembert Pierrot        |      50283
 Tarte au sucre             |      49825
 
+Côte de Blaye has emerged as the best performing product, generating significant interest and investment. The analysis reveals that the United States has dedicated the highest expenditure, investing a substantial sum of 42,160 in this product. Germany follows closely with a considerable investment of 31,620, while Brazil spent 26,613 on Côte de Blaye.
+
+Among the companies, Quick-shop, operating in Germany, has shown the most interest and investment in Côte de Blaye. They spent a substantial sum of 23,715 on this product, demonstrating their strong commitment.
+
+Thüringer Rostbratwurst ranks as the second best performing product. The United States has exhibited a strong interest, investing 19,704 in this product, while Ireland closely follows with a sum of 18,568. Hungry Owl All-Night Grocers, an Irish company, stands out as the top spender, purchasing Thüringer Rostbratwurst for the highest amount in Ireland.
+
+Raclette Courdavault secures the third position among the top performing products. Germany has made a significant investment, spending 17,039, while the United States follows with an expenditure of 14,079. Ernst Handel, an Austrian company, takes the lead in spending the most on this product, with a sum of 9,130.
 
 3) Which countries do we genearate the highest revenue?
 
@@ -70,12 +77,18 @@ France             |  85489
 
  The findings shed light on the spending patterns of the United States and Germany.
  The United States has emerged as the highest paying country, demonstrating a significant commitment to their business operations. Within the United States, several companies have made noteworthy expenditures on specific products, indicating their interest and investment in these items.
+ 
 Rattlesnake Canyon Grocery, a company operating within the United States, stands out by dedicating a substantial sum of 16,864 to the purchase of Côte de Blaye. This expenditure underscores their strong interest in this particular product and their willingness to make a significant investment in it.
+
 Save-a-lot Markets, another company from the United States, has also made a substantial investment of 14,259 in Thüringer Rostbratwurst. This expenditure highlights their preference for this product and their commitment to acquiring a significant quantity of it.
 Great Lakes Food Market, operating within the United States, has spent a notable amount of 11,857 on Côte de Blaye. This expenditure demonstrates their interest in this specific product and their dedication to procuring a substantial quantity of it.
 Germany follows the United States in terms of expenditures. Within Germany, QUICK-Stop emerges as a company that has made a significant investment in Côte de Blaye, spending a substantial sum of 23,715. This expenditure reflects their strong interest and commitment to this product.
+
 Additionally, Königlich Essen, also based in Germany, has invested 7,905 in Côte de Blaye. This expenditure indicates their preference for this product and their willingness to make a notable financial commitment to it.
-In conclusion, the United States and Germany have emerged as the highest paying countries, with companies such as Rattlesnake Canyon Grocery, Save-a-lot Markets, Great Lakes Food Market, QUICK-Stop, and Königlich Essen making substantial investments in specific products. The United States companies have shown a particular interest in Côte de Blaye and Thüringer Rostbratwurst, while the German companies have focused their expenditures on Côte de Blaye. These findings provide valuable insights into the expenditure patterns and product preferences of these companies within the respective countries.
+
+In conclusion, the United States and Germany have emerged as the highest paying countries, with companies such as Rattlesnake Canyon Grocery, Save-a-lot Markets, Great Lakes Food Market, QUICK-Stop, and Königlich Essen making substantial investments in specific products. The United States companies have shown a particular interest in Côte de Blaye and Thüringer Rostbratwurst, while the German companies have focused their expenditures on Côte de Blaye. 
+
+These findings provide valuable insights into the expenditure patterns and product preferences of these companies within the respective countries.
 
 4) Who are the companys's Top customers ?
 ``` Sql
@@ -106,7 +119,25 @@ Lastly, Ernst has made a substantial expenditure of 9,130 on Raclette Courdavaul
 
 In conclusion, Quick Stop emerges as the highest paying company, with a substantial investment in the Côte de Blaye product. They have shown a strong preference for Camembert Pierrot and Singaporean Hokkien Fried Mee. Save-a-Lot follows closely, focusing their spending on Thüringer Rostbratwurst, Scottish Longbreads, and Alice Mutton. Lastly, Ernst has made a significant expenditure on Raclette Courdavault. These findings provide valuable insights into the expenditure patterns and product preferences of these companies.
 
+5) Identify the average shipping days?
 
+```SQL
+select country,DATEDIFF(day, O.orderDate, O.shippedDate) as date_difference 
+from orders O
+join customers C on C.customerID = O.customerID
+order by date_difference  desc
+```
+
+```SQL
+select AVG(DATEDIFF(day, orderDate, shippedDate)) as date_difference 
+from orders;
+```
+| date_difference              | 
+|------------------------------|
+|   8                          |
+
+Acoording the analysis, It takes 
+   
 ``` DAX
 Total_revenue = ROUND(SUM(order_details[Revenue]),0)
 pm revenue = CALCULATE([Total_revenue],DATEADD('Calendar'[Date],-1,MONTH))
